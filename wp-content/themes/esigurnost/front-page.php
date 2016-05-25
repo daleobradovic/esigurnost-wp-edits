@@ -53,7 +53,20 @@
         </div>
     </div>
 </nav>
+<!--	Sekcija: Početna	-->
+<div id="pocetna" class="text-center" style="background-image: url('<?php
+echo get_theme_mod("bg-image");
+?>')">
+    <div class="overlay">
+        <div class="sadrzaj">
+            <h1><?php echo get_theme_mod("pocetna-naslov"); ?></h1>
+            <p class="lead"><?php echo get_theme_mod("pocetna-podnaslov", "pocetna-podnaslov[default]"); ?></p>
+            <a href="#onama" class="fa fa-angle-down page-scroll"></a>
+        </div>
+    </div>
+</div>
 
+<!-- Komentar -->
 
 </body>
 
