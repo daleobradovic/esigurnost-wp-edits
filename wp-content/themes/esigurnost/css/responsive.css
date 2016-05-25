@@ -1,0 +1,28 @@
+@media (max-width: 767px) {
+    .sadrzaj {
+        padding: 40% 0 0;
+    }
+    #navigacija.navbar-default {
+        background-color: rgba(0, 0, 0, 0.8);
+    }  
+}
+
+@media (max-width: 1023px) {
+    #onama img {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    #onama, .line, hr, .line hr {
+        text-align: center !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 992px), (max-width: 1199px) {
+    #aktivnosti .dogadjaj-wrap {
+        height: 360px;
+    }
+}
