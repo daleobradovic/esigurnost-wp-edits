@@ -1,73 +1,143 @@
-<!DOCTYPE html>
+<?php get_header(); ?>
 
-<html lang="sr">
-
-<head>
-
-    <?php wp_head(); ?>
-
-</head>
-
-<body <?php body_class( $class ); ?> id="top">
-<!--	Navigacija -->
-<nav id="navigacija" class="navbar navbar-default navbar-fixed-top">
+<!--	Sekcija: O nama	-->
+<div id="onama">
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigacija-collapse">
-                <span class="sr-only">Otvori navigaciju</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="#top" class="navbar-brand page-scroll">ESigurnost</a>
-        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="<?php echo get_theme_mod("onama-slika"); ?>" alt="<?php echo get_theme_mod("onama-naslov"); ?>" class="img-responsive center-block">
+            </div>
+            <div class="col-md-6">
+                <div class="onama-tekst">
+                    <div class="naslov-sekcije">
+                        <h2><?php echo get_theme_mod("onama-naslov"); ?></h2>
+                        <div class="line">
+                            <hr>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <?php echo get_theme_mod("onama-tekst"); ?>
+                    <ul class="onama-lista">
+                        <?php if(!empty(get_theme_mod("prva-opcija"))) { ?>
+                            <li>
+                                <span class="fa fa-dot-circle-o"></span>
+                                <strong><?php echo get_theme_mod("prva-opcija"); ?></strong><?php if(!empty(get_theme_mod("prva-opcija-opis"))) echo ' - <em>' . get_theme_mod("prva-opcija-opis") . '</em>'; ?>
+                                <!-- Button trigger modal -->
+                                <?php if(!empty(get_theme_mod("prva-opcija-tekst"))) { ?>
+                                <button type="button" class="btn btn-crvena btn-xs" data-toggle="modal" data-target="#prva-opcija">
+                                    Više
+                                </button>
+                                <?php } ?>
+                                <!-- Modal -->
+                                <div class="modal fade" id="prva-opcija" tabindex="-1" role="dialog" aria-labelledby="prvaOpcija">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Zatvori"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="prvaOpcija"><?php echo get_theme_mod("prva-opcija"); ?></h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <?php if(!empty(get_theme_mod("prva-opcija-slika"))) { ?>
+                                                    <img src='<?php echo get_theme_mod("prva-opcija-slika"); ?>' alt='<?php echo get_theme_mod("prva-opcija-opis"); ?>' class='img-responsive center-block'/>
+                                                <?php } ?>
+                                                <?php echo get_theme_mod("prva-opcija-tekst"); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php } ?>
 
-        <div class="collapse navbar-collapse" id="navigacija-collapse">
-<!--            <ul class="nav navbar-nav navbar-right">-->
-<!--                <li>-->
-<!--                    <a href="#onama" class="page-scroll">O nama</a>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a href="#tim" class="page-scroll">Tim</a>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a href="#aktivnosti" class="page-scroll">Aktivnosti</a>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a href="#bazaznanja" class="page-scroll">Baza znanja</a>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a href="#kontakt" class="page-scroll">Kontakt</a>-->
-<!--                </li>-->
-<!--            </ul>-->
-            <?php /* Primary navigation */
-            wp_nav_menu( array(
-                    'menu' => 'top_menu',
-                    'depth' => 2,
-                    'container' => false,
-                    'menu_class' => 'nav navbar-nav navbar-right',
-                    //Process nav menu using our custom nav walker
-                    'walker' => new wp_bootstrap_navwalker())
-            );
-            ?>
-        </div>
-    </div>
-</nav>
-<!--	Sekcija: Početna	-->
-<div id="pocetna" class="text-center" style="background-image: url('<?php
-echo get_theme_mod("bg-image");
-?>')">
-    <div class="overlay">
-        <div class="sadrzaj">
-            <h1><?php echo get_theme_mod("pocetna-naslov"); ?></h1>
-            <p class="lead"><?php echo get_theme_mod("pocetna-podnaslov", "pocetna-podnaslov[default]"); ?></p>
-            <a href="#onama" class="fa fa-angle-down page-scroll"></a>
+                        <?php if(!empty(get_theme_mod("druga-opcija"))) { ?>
+                            <li>
+                                <span class="fa fa-dot-circle-o"></span>
+                                <strong><?php echo get_theme_mod("druga-opcija"); ?></strong> - <em><?php echo get_theme_mod("druga-opcija-opis"); ?></em>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-crvena btn-xs" data-toggle="modal" data-target="#druga-opcija">
+                                    Više
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="druga-opcija" tabindex="-1" role="dialog" aria-labelledby="drugaOpcija">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="drugaOpcija"><?php echo get_theme_mod("druga-opcija"); ?></h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <?php if(!empty(get_theme_mod("druga-opcija-slika"))) { ?>
+                                                    <img src='<?php echo get_theme_mod("druga-opcija-slika"); ?>' alt='<?php echo get_theme_mod("druga-opcija-opis"); ?>' class='img-responsive center-block'/>
+                                                <?php } ?>
+                                                <?php echo get_theme_mod("druga-opcija-tekst"); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php } ?>
+
+                        <?php if(!empty(get_theme_mod("treca-opcija"))) { ?>
+                            <li>
+                                <span class="fa fa-dot-circle-o"></span>
+                                <strong><?php echo get_theme_mod("treca-opcija"); ?></strong> - <em><?php echo get_theme_mod("treca-opcija-opis"); ?></em>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-crvena btn-xs" data-toggle="modal" data-target="#treca-opcija">
+                                    Više
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="treca-opcija" tabindex="-1" role="dialog" aria-labelledby="trecaOpcija">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="trecaOpcija"><?php echo get_theme_mod("treca-opcija"); ?></h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <?php if(!empty(get_theme_mod("treca-opcija-slika"))) { ?>
+                                                    <img src='<?php echo get_theme_mod("treca-opcija-slika"); ?>' alt='<?php echo get_theme_mod("treca-opcija-opis"); ?>' class='img-responsive center-block'/>
+                                                <?php } ?>
+                                                <?php echo get_theme_mod("treca-opcija-tekst"); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php } ?>
+
+                        <?php if(!empty(get_theme_mod("cetvrta-opcija"))) { ?>
+                            <li>
+                                <span class="fa fa-dot-circle-o"></span>
+                                <strong><?php echo get_theme_mod("cetvrta-opcija"); ?></strong> - <em><?php echo get_theme_mod("cetvrta-opcija-opis"); ?></em>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-crvena btn-xs" data-toggle="modal" data-target="#cetvrta-opcija">
+                                    Više
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="cetvrta-opcija" tabindex="-1" role="dialog" aria-labelledby="cetvrtaOpcija">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="cetvrtaOpcija"><?php echo get_theme_mod("cetvrta-opcija"); ?></h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <?php if(!empty(get_theme_mod("cetvrta-opcija-slika"))) { ?>
+                                                    <img src='<?php echo get_theme_mod("cetvrta-opcija-slika"); ?>' alt='<?php echo get_theme_mod("cetvrta-opcija-opis"); ?>' class='img-responsive center-block'/>
+                                                <?php } ?>
+                                                <?php echo get_theme_mod("cetvrta-opcija-tekst"); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- Komentar -->
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-</body>
-
-</html>
+<?php get_footer(); ?>

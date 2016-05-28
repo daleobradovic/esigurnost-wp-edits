@@ -26,7 +26,7 @@ load_theme_textdomain( 'esigurnost', get_template_directory() . '/languages' );
     endif;
     add_action( 'after_setup_theme', 'esigurnost_setup' );
 
-function esigurnost_customize($wp_customize) {
+function esigurnost_pocetna($wp_customize) {
 
     $wp_customize->add_section("pocetna", array(
         "title" => __("Sekcija: Pocetna", "esigurnost"),
@@ -71,18 +71,335 @@ function esigurnost_customize($wp_customize) {
         'settings'   => 'pocetna-podnaslov',
     ));
 }
-add_action( 'customize_register', 'esigurnost_customize' );
+add_action( 'customize_register', 'esigurnost_pocetna' );
+
+function esigurnost_onama($wp_customize) {
+
+    $wp_customize->add_section("onama", array(
+        "title" => __("Sekcija: O nama", "esigurnost"),
+        "priority" => 40
+    ));
+
+    $wp_customize->add_section("prva-opcija", array(
+        "title" => __("Sekcija: O nama", "esigurnost"),
+        "priority" => 40
+    ));
+
+    $wp_customize->add_setting("onama-naslov", array(
+        "default" => "O nama",
+        "transport" => "refresh"
+    ));
+
+    $wp_customize->add_control(
+        'onama-naslov',
+        array(
+            'label'     => __( 'Naslov sekcije', 'esigurnost' ),
+            'section'  => 'onama',
+            'settings' => 'onama-naslov',
+            'type'     => 'text'
+        )
+    );
+
+    $wp_customize->add_setting("onama-tekst", array(
+        "default" => "",
+        "transport" => "refresh"
+    ));
+
+    $wp_customize->add_control(
+        'onama-tekst',
+        array(
+            'label'     => __( 'Tekst', 'esigurnost' ),
+            'section'   => 'onama',
+            'settings'  => 'onama-tekst',
+            'type'      => 'textarea'
+        )
+    );
+
+    $wp_customize->add_setting("onama-slika", array(
+        "default" => get_stylesheet_directory_uri() . "/images/bg.jpg",
+        "transport" => "refresh",
+    ));
+
+    $wp_customize->add_control(
+        new WP_Customize_Upload_Control(
+            $wp_customize,
+            'onama-slika',
+            array(
+                'label'      => __( 'Slika', 'esigurnost' ),
+                'section'    => 'onama',
+                'settings'   => 'onama-slika',
+            ) )
+    );
+
+    $wp_customize->add_setting("prva-opcija", array(
+        "default" => "",
+        "transport" => "refresh"
+    ));
+
+    $wp_customize->add_control(
+        'prva-opcija',
+        array(
+            'label'     => __( 'Prva opcija', 'esigurnost' ),
+            'section'   => 'onama',
+            'settings'  => 'prva-opcija',
+            'type'      => 'text'
+        )
+    );
+
+    $wp_customize->add_setting("prva-opcija-opis", array(
+        "default" => "",
+        "transport" => "refresh"
+    ));
+
+    $wp_customize->add_control(
+        'prva-opcija-opis',
+        array(
+            'label'     => __( 'Opis prve opcije', 'esigurnost' ),
+            'section'   => 'onama',
+            'settings'  => 'prva-opcija-opis',
+            'type'      => 'text'
+        )
+    );
+
+    $wp_customize->add_setting("prva-opcija-tekst", array(
+        "default" => "",
+        "transport" => "refresh"
+    ));
+
+    $wp_customize->add_control(
+        'prva-opcija-tekst',
+        array(
+            'label'     => __( 'Tekst prve opcije', 'esigurnost' ),
+            'section'   => 'onama',
+            'settings'  => 'prva-opcija-tekst',
+            'type'      => 'textarea'
+        )
+    );
+
+    $wp_customize->add_setting("prva-opcija-slika", array(
+        "default" => "",
+        "transport" => "refresh",
+    ));
+
+    $wp_customize->add_control(
+        new WP_Customize_Upload_Control(
+            $wp_customize,
+            'prva-opcija-slika',
+            array(
+                'label'      => __( 'Slika prve opcije', 'esigurnost' ),
+                'section'    => 'onama',
+                'settings'   => 'prva-opcija-slika',
+            ) )
+    );
+
+    $wp_customize->add_setting("druga-opcija", array(
+        "default" => "",
+        "transport" => "refresh"
+    ));
+
+    $wp_customize->add_control(
+        'druga-opcija',
+        array(
+            'label'     => __( 'Druga opcija', 'esigurnost' ),
+            'section'   => 'onama',
+            'settings'  => 'druga-opcija',
+            'type'      => 'text'
+        )
+    );
+
+    $wp_customize->add_setting("druga-opcija-opis", array(
+        "default" => "",
+        "transport" => "refresh"
+    ));
+
+    $wp_customize->add_control(
+        'druga-opcija-opis',
+        array(
+            'label'     => __( 'Opis druge opcije', 'esigurnost' ),
+            'section'   => 'onama',
+            'settings'  => 'druga-opcija-opis',
+            'type'      => 'text'
+        )
+    );
+
+    $wp_customize->add_setting("druga-opcija-tekst", array(
+        "default" => "",
+        "transport" => "refresh"
+    ));
+
+    $wp_customize->add_control(
+        'druga-opcija-tekst',
+        array(
+            'label'     => __( 'Tekst druge opcije', 'esigurnost' ),
+            'section'   => 'onama',
+            'settings'  => 'druga-opcija-tekst',
+            'type'      => 'textarea'
+        )
+    );
+
+    $wp_customize->add_setting("druga-opcija-slika", array(
+        "default" => "",
+        "transport" => "refresh",
+    ));
+
+    $wp_customize->add_control(
+        new WP_Customize_Upload_Control(
+            $wp_customize,
+            'druga-opcija-slika',
+            array(
+                'label'      => __( 'Slika druge opcije', 'esigurnost' ),
+                'section'    => 'onama',
+                'settings'   => 'druga-opcija-slika',
+            ) )
+    );
+
+    $wp_customize->add_setting("treca-opcija", array(
+        "default" => "",
+        "transport" => "refresh"
+    ));
+
+    $wp_customize->add_control(
+        'treca-opcija',
+        array(
+            'label'     => __( 'Treca opcija', 'esigurnost' ),
+            'section'   => 'onama',
+            'settings'  => 'treca-opcija',
+            'type'      => 'text'
+        )
+    );
+
+    $wp_customize->add_setting("treca-opcija-opis", array(
+        "default" => "",
+        "transport" => "refresh"
+    ));
+
+    $wp_customize->add_control(
+        'treca-opcija-opis',
+        array(
+            'label'     => __( 'Opis trece opcije', 'esigurnost' ),
+            'section'   => 'onama',
+            'settings'  => 'treca-opcija-opis',
+            'type'      => 'text'
+        )
+    );
+
+    $wp_customize->add_setting("treca-opcija-tekst", array(
+        "default" => "",
+        "transport" => "refresh"
+    ));
+
+    $wp_customize->add_control(
+        'treca-opcija-tekst',
+        array(
+            'label'     => __( 'Tekst trece opcije', 'esigurnost' ),
+            'section'   => 'onama',
+            'settings'  => 'treca-opcija-tekst',
+            'type'      => 'textarea'
+        )
+    );
+
+    $wp_customize->add_setting("treca-opcija-slika", array(
+        "default" => "",
+        "transport" => "refresh",
+    ));
+
+    $wp_customize->add_control(
+        new WP_Customize_Upload_Control(
+            $wp_customize,
+            'treca-opcija-slika',
+            array(
+                'label'      => __( 'Slika trece opcije', 'esigurnost' ),
+                'section'    => 'onama',
+                'settings'   => 'treca-opcija-slika',
+            ) )
+    );
+
+    $wp_customize->add_setting("cetvrta-opcija", array(
+        "default" => "",
+        "transport" => "refresh"
+    ));
+
+    $wp_customize->add_control(
+        'cetvrta-opcija',
+        array(
+            'label'     => __( 'Cetvrta opcija', 'esigurnost' ),
+            'section'   => 'onama',
+            'settings'  => 'cetvrta-opcija',
+            'type'      => 'text'
+        )
+    );
+
+    $wp_customize->add_setting("cetvrta-opcija-opis", array(
+        "default" => "",
+        "transport" => "refresh"
+    ));
+
+    $wp_customize->add_control(
+        'cetvrta-opcija-opis',
+        array(
+            'label'     => __( 'Opis cetvrte opcije', 'esigurnost' ),
+            'section'   => 'onama',
+            'settings'  => 'cetvrta-opcija-opis',
+            'type'      => 'text'
+        )
+    );
+
+    $wp_customize->add_setting("cetvrta-opcija-tekst", array(
+        "default" => "",
+        "transport" => "refresh"
+    ));
+
+    $wp_customize->add_control(
+        'cetvrta-opcija-tekst',
+        array(
+            'label'     => __( 'Tekst cetvrte opcije', 'esigurnost' ),
+            'section'   => 'onama',
+            'settings'  => 'cetvrta-opcija-tekst',
+            'type'      => 'textarea'
+        )
+    );
+
+    $wp_customize->add_setting("cetvrta-opcija-slika", array(
+        "default" => "",
+        "transport" => "refresh",
+    ));
+
+    $wp_customize->add_control(
+        new WP_Customize_Upload_Control(
+            $wp_customize,
+            'cetvrta-opcija-slika',
+            array(
+                'label'      => __( 'Slika cetvrte opcije', 'esigurnost' ),
+                'section'    => 'onama',
+                'settings'   => 'cetvrta-opcija-slika',
+            ) )
+    );
+}
+add_action( 'customize_register', 'esigurnost_onama' );
 
 function esigurnost_scripts() {
-    wp_enqueue_style( 'bootstrap', get_template_directory_uri() . "/css/bootstrap.min.css" );
-    wp_enqueue_style( 'style-name', get_stylesheet_uri() );
-    wp_enqueue_style( 'font-awesome', get_template_directory_uri() . "/fonts/font-awesome/css/font-awesome.min.css" );
-    wp_enqueue_style( 'custom-styles', get_template_directory_uri() . "/css/styles.css" );
-    wp_enqueue_style( 'responsive', get_template_directory_uri() . "/css/responsive.css" );
+//    wp_enqueue_style( 'bootstrap', get_template_directory_uri() . "/css/bootstrap.min.css" );
+//    wp_enqueue_style( 'style-name', get_stylesheet_uri() );
+//    wp_enqueue_style( 'font-awesome', get_template_directory_uri() . "/fonts/font-awesome/css/font-awesome.min.css" );
+//    wp_enqueue_style( 'custom-styles', get_template_directory_uri() . "/css/styles.css" );
+//    wp_enqueue_style( 'responsive', get_template_directory_uri() . "/css/responsive.css" );
+//    wp_deregister_script( 'jquery' );
+//
+//    wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ) );
+//    wp_enqueue_script( 'main-js', get_template_directory_uri() . '/js/main.js', array( 'jquery' ) );
 
-    wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ) );
-    wp_enqueue_script( 'main-js', get_template_directory_uri() . '/js/main.js', array( 'jquery' ) );
 }
 add_action( 'wp_enqueue_scripts', 'esigurnost_scripts' );
+
+function pm_remove_all_scripts() {
+    global $wp_scripts;
+    $wp_scripts->queue = array();
+}
+add_action('wp_print_scripts', 'pm_remove_all_scripts', 100);
+function pm_remove_all_styles() {
+    global $wp_styles;
+    $wp_styles->queue = array();
+}
+add_action('wp_print_styles', 'pm_remove_all_styles', 100);
 
 ?>
