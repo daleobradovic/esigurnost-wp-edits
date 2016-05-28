@@ -3,12 +3,74 @@
 <html lang="sr">
 
 <head>
-
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/css/styles.css">
-    <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery.1.js"></script>
-    <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery.2.js"></script>
+    <link rel="stylesheet" href="http://daleobradovic.com/esigurnost/css/responsive.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery.min.js"></script>
+    <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery-2.2.4.min.js"></script>
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/bootstrap.min.js"></script>
-    <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/main.js"></script>
+    <script src="http://kadirrazu.info/woocommerce/wp-content/plugins/fancy-scrollbar-wp/js/jquery.nicescroll.min.js?ver=3.8.14"></script>
+    <script>
+        'use strict';
+
+        /* Slider */
+        $(document).ready(function() {
+            $('a[href^="#"').click(function () {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        $('html,body').animate({
+                            scrollTop: target.offset().top - 40
+                        }, 1200);
+                        return false;
+                    }
+                }
+            });
+            
+            jQuery(document).ready(function($) {
+
+                var nice = $("html").niceScroll({
+                    cursorcolor:"#ff2929",
+
+                    cursoropacitymin: 0.25,
+
+                    cursoropacitymax: 0.8,
+
+                    cursorwidth: 10,
+
+                    cursorborder: "1px solid #FFFFFF",
+
+                    cursorborderradius: 1,
+
+                    scrollspeed: 100,
+
+                    background: "#000720",
+
+                    sensitiverail: true,
+
+                    cursorfixedheight: 100,
+
+                    hidecursordelay: 600,
+
+
+                });
+
+            });
+        });
+
+        $(window).bind('scroll', function () {
+            var navHeight = $(window).height();
+            if ($(window).scrollTop() > (navHeight - navHeight + 200)) {
+                $('.navbar-default').addClass('on');
+            } else {
+                $('.navbar-default').removeClass('on');
+            }
+        });
+
+
+    </script>
 
 </head>
 
